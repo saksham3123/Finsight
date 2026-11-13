@@ -1,0 +1,2155 @@
+{
+  "asset_type": "stock",
+  "generated_at": "2026-11-13T13:00:05",
+  "horizon_days": 5,
+  "assets": [
+    "BHARTIARTL",
+    "HDFCBANK",
+    "HINDUNILVR",
+    "ICICIBANK",
+    "INFY",
+    "ITC",
+    "LT",
+    "RELIANCE",
+    "SBIN",
+    "TCS"
+  ],
+  "test_period": {
+    "from": "2010-01-29",
+    "to": "2026-11-03"
+  },
+  "results": {
+    "always_up": {
+      "metrics": {
+        "rows": 41341,
+        "accuracy": 0.5290147795167025,
+        "balanced_accuracy": 0.5,
+        "auc": 0.47456950210526117,
+        "brier": 0.24932950309910798,
+        "log_loss": 0.6918061118997386,
+        "up_rate": 0.5290147795167025,
+        "predicts_one_class": true,
+        "auc_ci95": [
+          0.45836707575470004,
+          0.4921880144876571
+        ]
+      },
+      "backtest_avg": {
+        "total_return": 0.0,
+        "cagr": 0.0,
+        "sharpe": 0.0,
+        "max_drawdown": 0.0,
+        "exposure": 0.0,
+        "trades": 0.0
+      },
+      "per_asset": {
+        "RELIANCE": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 0.0,
+            "cagr": 0.0,
+            "sharpe": 0.0,
+            "max_drawdown": 0.0,
+            "exposure": 0.0,
+            "trades": 0
+          },
+          "buy_and_hold": {
+            "total_return": 4.482059015003545,
+            "cagr": 0.10928838067942692,
+            "sharpe": 0.5195189824460047,
+            "max_drawdown": -0.4508835364245183,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5319303338171263
+        },
+        "TCS": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 0.0,
+            "cagr": 0.0,
+            "sharpe": 0.0,
+            "max_drawdown": 0.0,
+            "exposure": 0.0,
+            "trades": 0
+          },
+          "buy_and_hold": {
+            "total_return": 5.617766801435364,
+            "cagr": 0.12209300564640846,
+            "sharpe": 0.5867810431260552,
+            "max_drawdown": -0.5646225691823361,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5314465408805031
+        },
+        "HDFCBANK": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 0.0,
+            "cagr": 0.0,
+            "sharpe": 0.0,
+            "max_drawdown": 0.0,
+            "exposure": 0.0,
+            "trades": 0
+          },
+          "buy_and_hold": {
+            "total_return": 8.03344509983818,
+            "cagr": 0.14358072339225947,
+            "sharpe": 0.6994433647252101,
+            "max_drawdown": -0.41054975597653864,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5476536042573779
+        },
+        "INFY": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 0.0,
+            "cagr": 0.0,
+            "sharpe": 0.0,
+            "max_drawdown": 0.0,
+            "exposure": 0.0,
+            "trades": 0
+          },
+          "buy_and_hold": {
+            "total_return": 2.645970353211493,
+            "cagr": 0.08204906576659665,
+            "sharpe": 0.42586524245629165,
+            "max_drawdown": -0.5072760854869456,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5437832607643929
+        },
+        "ICICIBANK": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 0.0,
+            "cagr": 0.0,
+            "sharpe": 0.0,
+            "max_drawdown": 0.0,
+            "exposure": 0.0,
+            "trades": 0
+          },
+          "buy_and_hold": {
+            "total_return": 8.432829992031689,
+            "cagr": 0.14660053418999897,
+            "sharpe": 0.5992446896770061,
+            "max_drawdown": -0.5234995411039731,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.519351717464925
+        },
+        "HINDUNILVR": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 0.0,
+            "cagr": 0.0,
+            "sharpe": 0.0,
+            "max_drawdown": 0.0,
+            "exposure": 0.0,
+            "trades": 0
+          },
+          "buy_and_hold": {
+            "total_return": 7.1597191526390365,
+            "cagr": 0.1365114500466349,
+            "sharpe": 0.6664982217452902,
+            "max_drawdown": -0.4008023899509081,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5094339622641509
+        },
+        "ITC": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 0.0,
+            "cagr": 0.0,
+            "sharpe": 0.0,
+            "max_drawdown": 0.0,
+            "exposure": 0.0,
+            "trades": 0
+          },
+          "buy_and_hold": {
+            "total_return": 2.487311231098188,
+            "cagr": 0.07909853373870424,
+            "sharpe": 0.43562920415070544,
+            "max_drawdown": -0.5700729612256521,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5124546553808949
+        },
+        "SBIN": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 0.0,
+            "cagr": 0.0,
+            "sharpe": 0.0,
+            "max_drawdown": 0.0,
+            "exposure": 0.0,
+            "trades": 0
+          },
+          "buy_and_hold": {
+            "total_return": 3.7602838790592426,
+            "cagr": 0.09978320309941702,
+            "sharpe": 0.45567305190172047,
+            "max_drawdown": -0.5949247890013472,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5355587808417998
+        },
+        "BHARTIARTL": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 0.0,
+            "cagr": 0.0,
+            "sharpe": 0.0,
+            "max_drawdown": 0.0,
+            "exposure": 0.0,
+            "trades": 0
+          },
+          "buy_and_hold": {
+            "total_return": 6.487364797280286,
+            "cagr": 0.13056950784199972,
+            "sharpe": 0.5599594579474563,
+            "max_drawdown": -0.4746870386913752,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5290275761973875
+        },
+        "LT": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 0.0,
+            "cagr": 0.0,
+            "sharpe": 0.0,
+            "max_drawdown": 0.0,
+            "exposure": 0.0,
+            "trades": 0
+          },
+          "buy_and_hold": {
+            "total_return": 5.233030184047049,
+            "cagr": 0.11800360555950262,
+            "sharpe": 0.5379344901372496,
+            "max_drawdown": -0.556453618788182,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5295113691340106
+        }
+      }
+    },
+    "sma_trend": {
+      "metrics": {
+        "rows": 41341,
+        "accuracy": 0.4924409182167824,
+        "balanced_accuracy": 0.48780631211783965,
+        "auc": 0.4878063121178397,
+        "brier": 0.2615118163566435,
+        "log_loss": 0.7166231217325036,
+        "up_rate": 0.5290147795167025,
+        "predicts_one_class": false,
+        "auc_ci95": [
+          0.47655825612687164,
+          0.4972023448985393
+        ]
+      },
+      "backtest_avg": {
+        "total_return": 0.8547578772682989,
+        "cagr": 0.03564587993278725,
+        "sharpe": 0.28028511275062645,
+        "max_drawdown": -0.5063271617155418,
+        "exposure": 0.5791592532857848,
+        "trades": 94.1
+      },
+      "per_asset": {
+        "RELIANCE": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 0.04496923245530393,
+            "cagr": 0.0026849806744151383,
+            "sharpe": 0.10612471151210215,
+            "max_drawdown": -0.5162470025197976,
+            "exposure": 0.5399129172714079,
+            "trades": 110
+          },
+          "buy_and_hold": {
+            "total_return": 4.482059015003545,
+            "cagr": 0.10928838067942692,
+            "sharpe": 0.5195189824460047,
+            "max_drawdown": -0.4508835364245183,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.48064828253507497
+        },
+        "TCS": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 0.18604630933273292,
+            "cagr": 0.010455242565771572,
+            "sharpe": 0.14748035854788796,
+            "max_drawdown": -0.4442470073069045,
+            "exposure": 0.5754716981132075,
+            "trades": 109
+          },
+          "buy_and_hold": {
+            "total_return": 5.617766801435364,
+            "cagr": 0.12209300564640846,
+            "sharpe": 0.5867810431260552,
+            "max_drawdown": -0.5646225691823361,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.4663763909046928
+        },
+        "HDFCBANK": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 1.698154083145222,
+            "cagr": 0.06237276353296006,
+            "sharpe": 0.46132053271908324,
+            "max_drawdown": -0.4773194003449117,
+            "exposure": 0.6199806482825351,
+            "trades": 92
+          },
+          "buy_and_hold": {
+            "total_return": 8.03344509983818,
+            "cagr": 0.14358072339225947,
+            "sharpe": 0.6994433647252101,
+            "max_drawdown": -0.41054975597653864,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5014513788098693
+        },
+        "INFY": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 0.15860500946276157,
+            "cagr": 0.009014409820085945,
+            "sharpe": 0.14721930228271446,
+            "max_drawdown": -0.5875191319516757,
+            "exposure": 0.6030478955007257,
+            "trades": 91
+          },
+          "buy_and_hold": {
+            "total_return": 2.645970353211493,
+            "cagr": 0.08204906576659665,
+            "sharpe": 0.42586524245629165,
+            "max_drawdown": -0.5072760854869456,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.4927431059506531
+        },
+        "ICICIBANK": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 1.3486122241141127,
+            "cagr": 0.05342563556502711,
+            "sharpe": 0.35242720153163204,
+            "max_drawdown": -0.4167849247595504,
+            "exposure": 0.5919206579583938,
+            "trades": 94
+          },
+          "buy_and_hold": {
+            "total_return": 8.432829992031689,
+            "cagr": 0.14660053418999897,
+            "sharpe": 0.5992446896770061,
+            "max_drawdown": -0.5234995411039731,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.48863086598935657
+        },
+        "HINDUNILVR": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 1.1320775524946471,
+            "cagr": 0.04723257673866854,
+            "sharpe": 0.3489041532842147,
+            "max_drawdown": -0.5408678246456999,
+            "exposure": 0.5725689404934688,
+            "trades": 92
+          },
+          "buy_and_hold": {
+            "total_return": 7.1597191526390365,
+            "cagr": 0.1365114500466349,
+            "sharpe": 0.6664982217452902,
+            "max_drawdown": -0.4008023899509081,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.496129656507015
+        },
+        "ITC": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 0.7430783106373298,
+            "cagr": 0.034443121992103976,
+            "sharpe": 0.2802492530045537,
+            "max_drawdown": -0.4924364871656808,
+            "exposure": 0.5564691656590085,
+            "trades": 82
+          },
+          "buy_and_hold": {
+            "total_return": 2.487311231098188,
+            "cagr": 0.07909853373870424,
+            "sharpe": 0.43562920415070544,
+            "max_drawdown": -0.5700729612256521,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.4964933494558646
+        },
+        "SBIN": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 1.0427931627238314,
+            "cagr": 0.04450525859399246,
+            "sharpe": 0.30758543758591145,
+            "max_drawdown": -0.5537444113562078,
+            "exposure": 0.56966618287373,
+            "trades": 86
+          },
+          "buy_and_hold": {
+            "total_return": 3.7602838790592426,
+            "cagr": 0.09978320309941702,
+            "sharpe": 0.45567305190172047,
+            "max_drawdown": -0.5949247890013472,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.49951620706337685
+        },
+        "BHARTIARTL": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 1.101926049041848,
+            "cagr": 0.04632375274844125,
+            "sharpe": 0.3196006712080704,
+            "max_drawdown": -0.5378921535679831,
+            "exposure": 0.5856313497822931,
+            "trades": 89
+          },
+          "buy_and_hold": {
+            "total_return": 6.487364797280286,
+            "cagr": 0.13056950784199972,
+            "sharpe": 0.5599594579474563,
+            "max_drawdown": -0.4746870386913752,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5094339622641509
+        },
+        "LT": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 1.091316839275199,
+            "cagr": 0.04600105709640645,
+            "sharpe": 0.33193950583009485,
+            "max_drawdown": -0.4962132735370064,
+            "exposure": 0.5769230769230769,
+            "trades": 96
+          },
+          "buy_and_hold": {
+            "total_return": 5.233030184047049,
+            "cagr": 0.11800360555950262,
+            "sharpe": 0.5379344901372496,
+            "max_drawdown": -0.556453618788182,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.4929850024189647
+        }
+      }
+    },
+    "logistic": {
+      "metrics": {
+        "rows": 41341,
+        "accuracy": 0.5202099610556107,
+        "balanced_accuracy": 0.4981540284183785,
+        "auc": 0.4945586905333309,
+        "brier": 0.2503394982451743,
+        "log_loss": 0.6938492280536083,
+        "up_rate": 0.5290147795167025,
+        "predicts_one_class": false,
+        "auc_ci95": [
+          0.480716184648667,
+          0.5080868054929282
+        ]
+      },
+      "backtest_avg": {
+        "total_return": 3.848488271395296,
+        "cagr": 0.09240466325675356,
+        "sharpe": 0.4771418106398045,
+        "max_drawdown": -0.5366560410837828,
+        "exposure": 0.9277222946644132,
+        "trades": 31.6
+      },
+      "per_asset": {
+        "RELIANCE": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 4.089017944220243,
+            "cagr": 0.10426912778681419,
+            "sharpe": 0.5155651630613328,
+            "max_drawdown": -0.4508835364245187,
+            "exposure": 0.9380745041122399,
+            "trades": 27
+          },
+          "buy_and_hold": {
+            "total_return": 4.482059015003545,
+            "cagr": 0.10928838067942692,
+            "sharpe": 0.5195189824460047,
+            "max_drawdown": -0.4508835364245183,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5324141267537494
+        },
+        "TCS": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 4.559458624424469,
+            "cagr": 0.11023681493979631,
+            "sharpe": 0.5519053210733432,
+            "max_drawdown": -0.5646225691823366,
+            "exposure": 0.9646831156265119,
+            "trades": 23
+          },
+          "buy_and_hold": {
+            "total_return": 5.617766801435364,
+            "cagr": 0.12209300564640846,
+            "sharpe": 0.5867810431260552,
+            "max_drawdown": -0.5646225691823361,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5135462022254476
+        },
+        "HDFCBANK": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 4.467236690524706,
+            "cagr": 0.10910531830662706,
+            "sharpe": 0.576808244970243,
+            "max_drawdown": -0.41054975597653864,
+            "exposure": 0.9371069182389937,
+            "trades": 19
+          },
+          "buy_and_hold": {
+            "total_return": 8.03344509983818,
+            "cagr": 0.14358072339225947,
+            "sharpe": 0.6994433647252101,
+            "max_drawdown": -0.41054975597653864,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5338655055636188
+        },
+        "INFY": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 1.1659342066398608,
+            "cagr": 0.04823880657400492,
+            "sharpe": 0.31173506504966786,
+            "max_drawdown": -0.5072760854869449,
+            "exposure": 0.9042089985486212,
+            "trades": 27
+          },
+          "buy_and_hold": {
+            "total_return": 2.645970353211493,
+            "cagr": 0.08204906576659665,
+            "sharpe": 0.42586524245629165,
+            "max_drawdown": -0.5072760854869456,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5224963715529753
+        },
+        "ICICIBANK": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 8.315878514061065,
+            "cagr": 0.1457288742958236,
+            "sharpe": 0.6114113089641149,
+            "max_drawdown": -0.5234995411039728,
+            "exposure": 0.9240445089501693,
+            "trades": 43
+          },
+          "buy_and_hold": {
+            "total_return": 8.432829992031689,
+            "cagr": 0.14660053418999897,
+            "sharpe": 0.5992446896770061,
+            "max_drawdown": -0.5234995411039731,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5179003386550556
+        },
+        "HINDUNILVR": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 5.775543815231282,
+            "cagr": 0.12370579155658179,
+            "sharpe": 0.6332969765752915,
+            "max_drawdown": -0.40080238995090733,
+            "exposure": 0.9593613933236574,
+            "trades": 31
+          },
+          "buy_and_hold": {
+            "total_return": 7.1597191526390365,
+            "cagr": 0.1365114500466349,
+            "sharpe": 0.6664982217452902,
+            "max_drawdown": -0.4008023899509081,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5026608611514272
+        },
+        "ITC": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 2.6400321769125714,
+            "cagr": 0.08192094868227917,
+            "sharpe": 0.4546705441338884,
+            "max_drawdown": -0.5700729612256533,
+            "exposure": 0.9603385731559855,
+            "trades": 21
+          },
+          "buy_and_hold": {
+            "total_return": 2.487311231098188,
+            "cagr": 0.07909853373870424,
+            "sharpe": 0.43562920415070544,
+            "max_drawdown": -0.5700729612256521,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5197097944377267
+        },
+        "SBIN": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 0.2697573139765199,
+            "cagr": 0.014664809561145242,
+            "sharpe": 0.19480652337951343,
+            "max_drawdown": -0.7975077931117555,
+            "exposure": 0.8630865989356555,
+            "trades": 45
+          },
+          "buy_and_hold": {
+            "total_return": 3.7602838790592426,
+            "cagr": 0.09978320309941702,
+            "sharpe": 0.45567305190172047,
+            "max_drawdown": -0.5949247890013472,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5164489598451862
+        },
+        "BHARTIARTL": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 5.270014369704485,
+            "cagr": 0.11840686368674591,
+            "sharpe": 0.5400070849891381,
+            "max_drawdown": -0.4746870386913744,
+            "exposure": 0.9342041606192549,
+            "trades": 41
+          },
+          "buy_and_hold": {
+            "total_return": 6.487364797280286,
+            "cagr": 0.13056950784199972,
+            "sharpe": 0.5599594579474563,
+            "max_drawdown": -0.4746870386913752,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5312046444121916
+        },
+        "LT": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 1.9320090582577603,
+            "cagr": 0.06776927717771741,
+            "sharpe": 0.3812118742015117,
+            "max_drawdown": -0.6666587396838262,
+            "exposure": 0.892114175133043,
+            "trades": 39
+          },
+          "buy_and_hold": {
+            "total_return": 5.233030184047049,
+            "cagr": 0.11800360555950262,
+            "sharpe": 0.5379344901372496,
+            "max_drawdown": -0.556453618788182,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5118529269472666
+        }
+      }
+    },
+    "mlp": {
+      "metrics": {
+        "rows": 41341,
+        "accuracy": 0.5104375801262669,
+        "balanced_accuracy": 0.4986808221961039,
+        "auc": 0.5016867498795354,
+        "brier": 0.2556751253661873,
+        "log_loss": 0.70558300110845,
+        "up_rate": 0.5290147795167025,
+        "predicts_one_class": false,
+        "auc_ci95": [
+          0.49141687603070555,
+          0.5127401661147738
+        ]
+      },
+      "backtest_avg": {
+        "total_return": 2.4139838188614062,
+        "cagr": 0.07277728355967776,
+        "sharpe": 0.422751961618731,
+        "max_drawdown": -0.4945149075363674,
+        "exposure": 0.745384802583817,
+        "trades": 320.5
+      },
+      "per_asset": {
+        "RELIANCE": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 1.2782229184649387,
+            "cagr": 0.05147346666067332,
+            "sharpe": 0.33873428506999714,
+            "max_drawdown": -0.40826240639449973,
+            "exposure": 0.7385099177552008,
+            "trades": 315
+          },
+          "buy_and_hold": {
+            "total_return": 4.482059015003545,
+            "cagr": 0.10928838067942692,
+            "sharpe": 0.5195189824460047,
+            "max_drawdown": -0.4508835364245183,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.49516207063376877
+        },
+        "TCS": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 2.0083820422914394,
+            "cagr": 0.06944432248886745,
+            "sharpe": 0.42236589922262324,
+            "max_drawdown": -0.6044601782215371,
+            "exposure": 0.760522496371553,
+            "trades": 311
+          },
+          "buy_and_hold": {
+            "total_return": 5.617766801435364,
+            "cagr": 0.12209300564640846,
+            "sharpe": 0.5867810431260552,
+            "max_drawdown": -0.5646225691823361,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5198355104015482
+        },
+        "HDFCBANK": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 1.9330507633466527,
+            "cagr": 0.06779239859923325,
+            "sharpe": 0.4270370415321377,
+            "max_drawdown": -0.4105497559765384,
+            "exposure": 0.7980164489598451,
+            "trades": 241
+          },
+          "buy_and_hold": {
+            "total_return": 8.03344509983818,
+            "cagr": 0.14358072339225947,
+            "sharpe": 0.6994433647252101,
+            "max_drawdown": -0.41054975597653864,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5120948234155781
+        },
+        "INFY": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 0.9069541463191175,
+            "cagr": 0.04013319261303283,
+            "sharpe": 0.2857250733531097,
+            "max_drawdown": -0.4539326876790305,
+            "exposure": 0.7336719883889695,
+            "trades": 327
+          },
+          "buy_and_hold": {
+            "total_return": 2.645970353211493,
+            "cagr": 0.08204906576659665,
+            "sharpe": 0.42586524245629165,
+            "max_drawdown": -0.5072760854869456,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5227382680212869
+        },
+        "ICICIBANK": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 3.8706324496041713,
+            "cagr": 0.10132060931141784,
+            "sharpe": 0.4970677656428804,
+            "max_drawdown": -0.543476545869238,
+            "exposure": 0.7331881954523464,
+            "trades": 355
+          },
+          "buy_and_hold": {
+            "total_return": 8.432829992031689,
+            "cagr": 0.14660053418999897,
+            "sharpe": 0.5992446896770061,
+            "max_drawdown": -0.5234995411039731,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.49733913884857284
+        },
+        "HINDUNILVR": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 4.929539876809258,
+            "cagr": 0.11460694352296552,
+            "sharpe": 0.6521857274675267,
+            "max_drawdown": -0.3897102903099775,
+            "exposure": 0.7595549104983067,
+            "trades": 279
+          },
+          "buy_and_hold": {
+            "total_return": 7.1597191526390365,
+            "cagr": 0.1365114500466349,
+            "sharpe": 0.6664982217452902,
+            "max_drawdown": -0.4008023899509081,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5179003386550556
+        },
+        "ITC": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 0.6540619621796218,
+            "cagr": 0.031143806422416542,
+            "sharpe": 0.25182336495440133,
+            "max_drawdown": -0.5945863627943204,
+            "exposure": 0.7922611850060459,
+            "trades": 299
+          },
+          "buy_and_hold": {
+            "total_return": 2.487311231098188,
+            "cagr": 0.07909853373870424,
+            "sharpe": 0.43562920415070544,
+            "max_drawdown": -0.5700729612256521,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5068923821039903
+        },
+        "SBIN": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 1.768110331852228,
+            "cagr": 0.06403172175555105,
+            "sharpe": 0.3609488285316437,
+            "max_drawdown": -0.571277283381018,
+            "exposure": 0.7223028543783261,
+            "trades": 393
+          },
+          "buy_and_hold": {
+            "total_return": 3.7602838790592426,
+            "cagr": 0.09978320309941702,
+            "sharpe": 0.45567305190172047,
+            "max_drawdown": -0.5949247890013472,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5142718916303822
+        },
+        "BHARTIARTL": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 3.968732839898582,
+            "cagr": 0.10266014983322891,
+            "sharpe": 0.5328574617571152,
+            "max_drawdown": -0.44631041551371786,
+            "exposure": 0.652636671504596,
+            "trades": 386
+          },
+          "buy_and_hold": {
+            "total_return": 6.487364797280286,
+            "cagr": 0.13056950784199972,
+            "sharpe": 0.5599594579474563,
+            "max_drawdown": -0.4746870386913752,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5108853410740203
+        },
+        "LT": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 2.822150857848053,
+            "cagr": 0.08516622438939092,
+            "sharpe": 0.45877416865587467,
+            "max_drawdown": -0.5225831492237969,
+            "exposure": 0.7631833575229802,
+            "trades": 299
+          },
+          "buy_and_hold": {
+            "total_return": 5.233030184047049,
+            "cagr": 0.11800360555950262,
+            "sharpe": 0.5379344901372496,
+            "max_drawdown": -0.556453618788182,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5072568940493469
+        }
+      }
+    },
+    "random_forest": {
+      "metrics": {
+        "rows": 41341,
+        "accuracy": 0.5266926295928981,
+        "balanced_accuracy": 0.505379713401171,
+        "auc": 0.503186524073871,
+        "brier": 0.24979093016595547,
+        "log_loss": 0.6927448758114644,
+        "up_rate": 0.5290147795167025,
+        "predicts_one_class": false,
+        "auc_ci95": [
+          0.4918097258792553,
+          0.5152464355023912
+        ]
+      },
+      "backtest_avg": {
+        "total_return": 5.241355730430589,
+        "cagr": 0.11375478190067138,
+        "sharpe": 0.5484478331272945,
+        "max_drawdown": -0.5066508652393058,
+        "exposure": 0.9429856225163199,
+        "trades": 21.4
+      },
+      "per_asset": {
+        "RELIANCE": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 3.8329880414893376,
+            "cagr": 0.10079984647902518,
+            "sharpe": 0.5055582942947952,
+            "max_drawdown": -0.4121225968220441,
+            "exposure": 0.9245283018867925,
+            "trades": 27
+          },
+          "buy_and_hold": {
+            "total_return": 4.482059015003545,
+            "cagr": 0.10928838067942692,
+            "sharpe": 0.5195189824460047,
+            "max_drawdown": -0.4508835364245183,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5292694726656991
+        },
+        "TCS": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 6.4000859773847845,
+            "cagr": 0.1297617231136552,
+            "sharpe": 0.6185589639183902,
+            "max_drawdown": -0.5646225691823359,
+            "exposure": 0.9796806966618288,
+            "trades": 19
+          },
+          "buy_and_hold": {
+            "total_return": 5.617766801435364,
+            "cagr": 0.12209300564640846,
+            "sharpe": 0.5867810431260552,
+            "max_drawdown": -0.5646225691823361,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5319303338171263
+        },
+        "HDFCBANK": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 5.896329450257033,
+            "cagr": 0.12491679438468273,
+            "sharpe": 0.6355365716979156,
+            "max_drawdown": -0.41054975597653853,
+            "exposure": 0.9632317368166424,
+            "trades": 13
+          },
+          "buy_and_hold": {
+            "total_return": 8.03344509983818,
+            "cagr": 0.14358072339225947,
+            "sharpe": 0.6994433647252101,
+            "max_drawdown": -0.41054975597653864,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5430575713594582
+        },
+        "INFY": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 2.7195074285281544,
+            "cagr": 0.08336699238117018,
+            "sharpe": 0.43236315885645604,
+            "max_drawdown": -0.5072760854869456,
+            "exposure": 0.9707305273343009,
+            "trades": 13
+          },
+          "buy_and_hold": {
+            "total_return": 2.645970353211493,
+            "cagr": 0.08204906576659665,
+            "sharpe": 0.42586524245629165,
+            "max_drawdown": -0.5072760854869456,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5382196419932269
+        },
+        "ICICIBANK": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 10.014254084622978,
+            "cagr": 0.157485088008827,
+            "sharpe": 0.6438739069867362,
+            "max_drawdown": -0.5234995411039725,
+            "exposure": 0.9179970972423802,
+            "trades": 35
+          },
+          "buy_and_hold": {
+            "total_return": 8.432829992031689,
+            "cagr": 0.14660053418999897,
+            "sharpe": 0.5992446896770061,
+            "max_drawdown": -0.5234995411039731,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5094339622641509
+        },
+        "HINDUNILVR": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 6.744368857557611,
+            "cagr": 0.1328977921260821,
+            "sharpe": 0.6755479281565291,
+            "max_drawdown": -0.40080238995090745,
+            "exposure": 0.9450895016932753,
+            "trades": 15
+          },
+          "buy_and_hold": {
+            "total_return": 7.1597191526390365,
+            "cagr": 0.1365114500466349,
+            "sharpe": 0.6664982217452902,
+            "max_drawdown": -0.4008023899509081,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5089501693275278
+        },
+        "ITC": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 2.690218077994318,
+            "cagr": 0.08282418519233237,
+            "sharpe": 0.4537474014360009,
+            "max_drawdown": -0.5700729612256533,
+            "exposure": 0.9743651753325272,
+            "trades": 9
+          },
+          "buy_and_hold": {
+            "total_return": 2.487311231098188,
+            "cagr": 0.07909853373870424,
+            "sharpe": 0.43562920415070544,
+            "max_drawdown": -0.5700729612256521,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.509552599758162
+        },
+        "SBIN": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 3.574348192225308,
+            "cagr": 0.0971153442299253,
+            "sharpe": 0.4511862123055671,
+            "max_drawdown": -0.6002759802003201,
+            "exposure": 0.9378326076439284,
+            "trades": 27
+          },
+          "buy_and_hold": {
+            "total_return": 3.7602838790592426,
+            "cagr": 0.09978320309941702,
+            "sharpe": 0.45567305190172047,
+            "max_drawdown": -0.5949247890013472,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5261248185776488
+        },
+        "BHARTIARTL": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 7.479100188331806,
+            "cagr": 0.13917451749943188,
+            "sharpe": 0.6154758485831452,
+            "max_drawdown": -0.4746870386913745,
+            "exposure": 0.8761490082244799,
+            "trades": 35
+          },
+          "buy_and_hold": {
+            "total_return": 6.487364797280286,
+            "cagr": 0.13056950784199972,
+            "sharpe": 0.5599594579474563,
+            "max_drawdown": -0.4746870386913752,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5358006773101113
+        },
+        "LT": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 3.062357005914561,
+            "cagr": 0.08920553559158195,
+            "sharpe": 0.4526300450374102,
+            "max_drawdown": -0.6025997337529665,
+            "exposure": 0.940251572327044,
+            "trades": 21
+          },
+          "buy_and_hold": {
+            "total_return": 5.233030184047049,
+            "cagr": 0.11800360555950262,
+            "sharpe": 0.5379344901372496,
+            "max_drawdown": -0.556453618788182,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5345911949685535
+        }
+      }
+    },
+    "gradient_boosting": {
+      "metrics": {
+        "rows": 41341,
+        "accuracy": 0.5239834546817929,
+        "balanced_accuracy": 0.5046416279406019,
+        "auc": 0.503191089267692,
+        "brier": 0.2502820738782513,
+        "log_loss": 0.6937566186101237,
+        "up_rate": 0.5290147795167025,
+        "predicts_one_class": false,
+        "auc_ci95": [
+          0.4926547642677606,
+          0.5142536477332748
+        ]
+      },
+      "backtest_avg": {
+        "total_return": 5.413376300524535,
+        "cagr": 0.11177513591734516,
+        "sharpe": 0.5515022628567225,
+        "max_drawdown": -0.504610900272802,
+        "exposure": 0.9072094858515429,
+        "trades": 55.2
+      },
+      "per_asset": {
+        "RELIANCE": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 4.161107610107417,
+            "cagr": 0.10521639431212004,
+            "sharpe": 0.5204414423436976,
+            "max_drawdown": -0.41212259682204444,
+            "exposure": 0.913159167876149,
+            "trades": 47
+          },
+          "buy_and_hold": {
+            "total_return": 4.482059015003545,
+            "cagr": 0.10928838067942692,
+            "sharpe": 0.5195189824460047,
+            "max_drawdown": -0.4508835364245183,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5307208514755685
+        },
+        "TCS": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 7.333674856785061,
+            "cagr": 0.13797382211110487,
+            "sharpe": 0.6618000155740775,
+            "max_drawdown": -0.5646225691823364,
+            "exposure": 0.9366231253023706,
+            "trades": 55
+          },
+          "buy_and_hold": {
+            "total_return": 5.617766801435364,
+            "cagr": 0.12209300564640846,
+            "sharpe": 0.5867810431260552,
+            "max_drawdown": -0.5646225691823361,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5278180938558297
+        },
+        "HDFCBANK": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 7.530568792061501,
+            "cagr": 0.13959483578467058,
+            "sharpe": 0.7081645268321346,
+            "max_drawdown": -0.41054975597653875,
+            "exposure": 0.9322689888727624,
+            "trades": 33
+          },
+          "buy_and_hold": {
+            "total_return": 8.03344509983818,
+            "cagr": 0.14358072339225947,
+            "sharpe": 0.6994433647252101,
+            "max_drawdown": -0.41054975597653864,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.532656023222061
+        },
+        "INFY": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 2.689150137780103,
+            "cagr": 0.0828259228115038,
+            "sharpe": 0.4337401601671898,
+            "max_drawdown": -0.5339392052594197,
+            "exposure": 0.9155781325592647,
+            "trades": 51
+          },
+          "buy_and_hold": {
+            "total_return": 2.645970353211493,
+            "cagr": 0.08204906576659665,
+            "sharpe": 0.42586524245629165,
+            "max_drawdown": -0.5072760854869456,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5307208514755685
+        },
+        "ICICIBANK": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 5.330049403782702,
+            "cagr": 0.11905672597848871,
+            "sharpe": 0.5425171782224898,
+            "max_drawdown": -0.5142731036994351,
+            "exposure": 0.8580067731011127,
+            "trades": 81
+          },
+          "buy_and_hold": {
+            "total_return": 8.432829992031689,
+            "cagr": 0.14660053418999897,
+            "sharpe": 0.5992446896770061,
+            "max_drawdown": -0.5234995411039731,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5188679245283019
+        },
+        "HINDUNILVR": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 12.074759097039646,
+            "cagr": 0.169648760051762,
+            "sharpe": 0.8186340658503253,
+            "max_drawdown": -0.4008023899509082,
+            "exposure": 0.9177552007740687,
+            "trades": 45
+          },
+          "buy_and_hold": {
+            "total_return": 7.1597191526390365,
+            "cagr": 0.1365114500466349,
+            "sharpe": 0.6664982217452902,
+            "max_drawdown": -0.4008023899509081,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5106434446057088
+        },
+        "ITC": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 1.9805180400405615,
+            "cagr": 0.06882066524019703,
+            "sharpe": 0.39949479165658147,
+            "max_drawdown": -0.5700729612256533,
+            "exposure": 0.9598548972188634,
+            "trades": 41
+          },
+          "buy_and_hold": {
+            "total_return": 2.487311231098188,
+            "cagr": 0.07909853373870424,
+            "sharpe": 0.43562920415070544,
+            "max_drawdown": -0.5700729612256521,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5076178960096736
+        },
+        "SBIN": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 2.6786965491171193,
+            "cagr": 0.08263863640109181,
+            "sharpe": 0.41145055153250937,
+            "max_drawdown": -0.5949247890013465,
+            "exposure": 0.9061441702951137,
+            "trades": 75
+          },
+          "buy_and_hold": {
+            "total_return": 3.7602838790592426,
+            "cagr": 0.09978320309941702,
+            "sharpe": 0.45567305190172047,
+            "max_drawdown": -0.5949247890013472,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.521044992743106
+        },
+        "BHARTIARTL": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 8.574145870183775,
+            "cagr": 0.14764034659404257,
+            "sharpe": 0.6500029147414857,
+            "max_drawdown": -0.4355293699662399,
+            "exposure": 0.8297048863086599,
+            "trades": 69
+          },
+          "buy_and_hold": {
+            "total_return": 6.487364797280286,
+            "cagr": 0.13056950784199972,
+            "sharpe": 0.5599594579474563,
+            "max_drawdown": -0.4746870386913752,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5285437832607643
+        },
+        "LT": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 1.7810926483474527,
+            "cagr": 0.06433524988847017,
+            "sharpe": 0.36877698164673317,
+            "max_drawdown": -0.6092722616440986,
+            "exposure": 0.9029995162070634,
+            "trades": 55
+          },
+          "buy_and_hold": {
+            "total_return": 5.233030184047049,
+            "cagr": 0.11800360555950262,
+            "sharpe": 0.5379344901372496,
+            "max_drawdown": -0.556453618788182,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5312046444121916
+        }
+      }
+    },
+    "lstm": {
+      "metrics": {
+        "rows": 41341,
+        "accuracy": 0.5205244188577925,
+        "balanced_accuracy": 0.498344199034748,
+        "auc": 0.5017343450779754,
+        "brier": 0.2498136894132352,
+        "log_loss": 0.6927818228807262,
+        "up_rate": 0.5290147795167025,
+        "predicts_one_class": false,
+        "auc_ci95": [
+          0.488087603118833,
+          0.5150237949296749
+        ]
+      },
+      "backtest_avg": {
+        "total_return": 4.391921287887163,
+        "cagr": 0.10057199063001687,
+        "sharpe": 0.5013260100529686,
+        "max_drawdown": -0.5110221716312698,
+        "exposure": 0.9514284937074745,
+        "trades": 11.6
+      },
+      "per_asset": {
+        "RELIANCE": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 1.5179141204483404,
+            "cagr": 0.057904868842670654,
+            "sharpe": 0.348217942575327,
+            "max_drawdown": -0.45088353642451817,
+            "exposure": 0.9383164005805515,
+            "trades": 13
+          },
+          "buy_and_hold": {
+            "total_return": 4.482059015003545,
+            "cagr": 0.10928838067942692,
+            "sharpe": 0.5195189824460047,
+            "max_drawdown": -0.4508835364245183,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5208030962747944
+        },
+        "TCS": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 5.751039974543433,
+            "cagr": 0.12345764329647002,
+            "sharpe": 0.5939673438557644,
+            "max_drawdown": -0.5646225691823354,
+            "exposure": 0.9958877600387034,
+            "trades": 5
+          },
+          "buy_and_hold": {
+            "total_return": 5.617766801435364,
+            "cagr": 0.12209300564640846,
+            "sharpe": 0.5867810431260552,
+            "max_drawdown": -0.5646225691823361,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5224963715529753
+        },
+        "HDFCBANK": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 5.604546192875485,
+            "cagr": 0.12195623068295136,
+            "sharpe": 0.6332800059188324,
+            "max_drawdown": -0.4105497559765384,
+            "exposure": 0.9707305273343009,
+            "trades": 5
+          },
+          "buy_and_hold": {
+            "total_return": 8.03344509983818,
+            "cagr": 0.14358072339225947,
+            "sharpe": 0.6994433647252101,
+            "max_drawdown": -0.41054975597653864,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5360425737784228
+        },
+        "INFY": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 1.122550938915976,
+            "cagr": 0.04694673768682156,
+            "sharpe": 0.3070607066375127,
+            "max_drawdown": -0.507276085486945,
+            "exposure": 0.9557329462989841,
+            "trades": 13
+          },
+          "buy_and_hold": {
+            "total_return": 2.645970353211493,
+            "cagr": 0.08204906576659665,
+            "sharpe": 0.42586524245629165,
+            "max_drawdown": -0.5072760854869456,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5333817126269956
+        },
+        "ICICIBANK": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 8.394887175528533,
+            "cagr": 0.14631885721941074,
+            "sharpe": 0.6157042892292698,
+            "max_drawdown": -0.5234995411039733,
+            "exposure": 0.9392839864537977,
+            "trades": 21
+          },
+          "buy_and_hold": {
+            "total_return": 8.432829992031689,
+            "cagr": 0.14660053418999897,
+            "sharpe": 0.5992446896770061,
+            "max_drawdown": -0.5234995411039731,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5145137880986937
+        },
+        "HINDUNILVR": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 6.54803391889757,
+            "cagr": 0.131125820927668,
+            "sharpe": 0.6666543361870506,
+            "max_drawdown": -0.40080238995090767,
+            "exposure": 0.9492017416545718,
+            "trades": 13
+          },
+          "buy_and_hold": {
+            "total_return": 7.1597191526390365,
+            "cagr": 0.1365114500466349,
+            "sharpe": 0.6664982217452902,
+            "max_drawdown": -0.4008023899509081,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.49903241412675375
+        },
+        "ITC": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 1.4278707031249969,
+            "cagr": 0.055545274245887066,
+            "sharpe": 0.3495186316724395,
+            "max_drawdown": -0.6265223917065761,
+            "exposure": 0.9460701330108827,
+            "trades": 9
+          },
+          "buy_and_hold": {
+            "total_return": 2.487311231098188,
+            "cagr": 0.07909853373870424,
+            "sharpe": 0.43562920415070544,
+            "max_drawdown": -0.5700729612256521,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5049576783555018
+        },
+        "SBIN": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 3.2186894295166883,
+            "cagr": 0.09171560239661791,
+            "sharpe": 0.43449651746800677,
+            "max_drawdown": -0.5949247890013467,
+            "exposure": 0.957426221577165,
+            "trades": 13
+          },
+          "buy_and_hold": {
+            "total_return": 3.7602838790592426,
+            "cagr": 0.09978320309941702,
+            "sharpe": 0.45567305190172047,
+            "max_drawdown": -0.5949247890013472,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5338655055636188
+        },
+        "BHARTIARTL": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 6.649751272566284,
+            "cagr": 0.132049177440978,
+            "sharpe": 0.580804401618445,
+            "max_drawdown": -0.47468703869137496,
+            "exposure": 0.9254958877600387,
+            "trades": 17
+          },
+          "buy_and_hold": {
+            "total_return": 6.487364797280286,
+            "cagr": 0.13056950784199972,
+            "sharpe": 0.5599594579474563,
+            "max_drawdown": -0.4746870386913752,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5302370585389453
+        },
+        "LT": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 3.6839291524543283,
+            "cagr": 0.09869969356069341,
+            "sharpe": 0.4835559253670375,
+            "max_drawdown": -0.5564536187881817,
+            "exposure": 0.9361393323657474,
+            "trades": 7
+          },
+          "buy_and_hold": {
+            "total_return": 5.233030184047049,
+            "cagr": 0.11800360555950262,
+            "sharpe": 0.5379344901372496,
+            "max_drawdown": -0.556453618788182,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5099177552007741
+        }
+      }
+    },
+    "gru": {
+      "metrics": {
+        "rows": 41341,
+        "accuracy": 0.5182990251808133,
+        "balanced_accuracy": 0.4999365640017042,
+        "auc": 0.5023468700958365,
+        "brier": 0.2500629421278048,
+        "log_loss": 0.6932882620969062,
+        "up_rate": 0.5290147795167025,
+        "predicts_one_class": false,
+        "auc_ci95": [
+          0.4883812936480383,
+          0.5161081342214503
+        ]
+      },
+      "backtest_avg": {
+        "total_return": 3.4158624661257697,
+        "cagr": 0.09173694081070746,
+        "sharpe": 0.48033537939010157,
+        "max_drawdown": -0.5008594656487222,
+        "exposure": 0.8776018670780369,
+        "trades": 23.2
+      },
+      "per_asset": {
+        "RELIANCE": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 3.7419700197438717,
+            "cagr": 0.09952481654822676,
+            "sharpe": 0.5101711821084053,
+            "max_drawdown": -0.44082858949497505,
+            "exposure": 0.862844702467344,
+            "trades": 23
+          },
+          "buy_and_hold": {
+            "total_return": 4.482059015003545,
+            "cagr": 0.10928838067942692,
+            "sharpe": 0.5195189824460047,
+            "max_drawdown": -0.4508835364245183,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5087082728592163
+        },
+        "TCS": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 3.1230828608606087,
+            "cagr": 0.09019114742195011,
+            "sharpe": 0.49211556606283585,
+            "max_drawdown": -0.564622569182335,
+            "exposure": 0.8947750362844702,
+            "trades": 15
+          },
+          "buy_and_hold": {
+            "total_return": 5.617766801435364,
+            "cagr": 0.12209300564640846,
+            "sharpe": 0.5867810431260552,
+            "max_drawdown": -0.5646225691823361,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5316884373488147
+        },
+        "HDFCBANK": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 3.8064086710513507,
+            "cagr": 0.10042985530430726,
+            "sharpe": 0.5563366318558831,
+            "max_drawdown": -0.40631194335317633,
+            "exposure": 0.8928398645379777,
+            "trades": 19
+          },
+          "buy_and_hold": {
+            "total_return": 8.03344509983818,
+            "cagr": 0.14358072339225947,
+            "sharpe": 0.6994433647252101,
+            "max_drawdown": -0.41054975597653864,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5278180938558297
+        },
+        "INFY": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 1.5555504783179321,
+            "cagr": 0.05886209379135621,
+            "sharpe": 0.3541852405673303,
+            "max_drawdown": -0.5072760854869456,
+            "exposure": 0.8657474600870827,
+            "trades": 23
+          },
+          "buy_and_hold": {
+            "total_return": 2.645970353211493,
+            "cagr": 0.08204906576659665,
+            "sharpe": 0.42586524245629165,
+            "max_drawdown": -0.5072760854869456,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5343492985002419
+        },
+        "ICICIBANK": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 3.0474310059209087,
+            "cagr": 0.08896116124936504,
+            "sharpe": 0.45039203849483844,
+            "max_drawdown": -0.5234995411039725,
+            "exposure": 0.8219641993226899,
+            "trades": 25
+          },
+          "buy_and_hold": {
+            "total_return": 8.432829992031689,
+            "cagr": 0.14660053418999897,
+            "sharpe": 0.5992446896770061,
+            "max_drawdown": -0.5234995411039731,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5123367198838897
+        },
+        "HINDUNILVR": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 5.417334252196029,
+            "cagr": 0.11999130934361735,
+            "sharpe": 0.6216807807283867,
+            "max_drawdown": -0.40080238995090633,
+            "exposure": 0.9071117561683599,
+            "trades": 21
+          },
+          "buy_and_hold": {
+            "total_return": 7.1597191526390365,
+            "cagr": 0.1365114500466349,
+            "sharpe": 0.6664982217452902,
+            "max_drawdown": -0.4008023899509081,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.4997581035316884
+        },
+        "ITC": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 1.4857660332139346,
+            "cagr": 0.05706233991366405,
+            "sharpe": 0.35687691389615184,
+            "max_drawdown": -0.5854917105550124,
+            "exposure": 0.9388149939540508,
+            "trades": 17
+          },
+          "buy_and_hold": {
+            "total_return": 2.487311231098188,
+            "cagr": 0.07909853373870424,
+            "sharpe": 0.43562920415070544,
+            "max_drawdown": -0.5700729612256521,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5090689238210399
+        },
+        "SBIN": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 4.310988355126797,
+            "cagr": 0.10714670960793926,
+            "sharpe": 0.4914250861067338,
+            "max_drawdown": -0.545974398484528,
+            "exposure": 0.8766328011611031,
+            "trades": 31
+          },
+          "buy_and_hold": {
+            "total_return": 3.7602838790592426,
+            "cagr": 0.09978320309941702,
+            "sharpe": 0.45567305190172047,
+            "max_drawdown": -0.5949247890013472,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.52322206095791
+        },
+        "BHARTIARTL": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 5.345810442316796,
+            "cagr": 0.11922637552753246,
+            "sharpe": 0.556261828662053,
+            "max_drawdown": -0.47468703869137485,
+            "exposure": 0.8483309143686503,
+            "trades": 37
+          },
+          "buy_and_hold": {
+            "total_return": 6.487364797280286,
+            "cagr": 0.13056950784199972,
+            "sharpe": 0.5599594579474563,
+            "max_drawdown": -0.4746870386913752,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5275761973875182
+        },
+        "LT": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 2.324282542509466,
+            "cagr": 0.07597359939911619,
+            "sharpe": 0.41390852541839734,
+            "max_drawdown": -0.5591003901839953,
+            "exposure": 0.8669569424286405,
+            "trades": 21
+          },
+          "buy_and_hold": {
+            "total_return": 5.233030184047049,
+            "cagr": 0.11800360555950262,
+            "sharpe": 0.5379344901372496,
+            "max_drawdown": -0.556453618788182,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5084663763909046
+        }
+      }
+    },
+    "xgboost": {
+      "metrics": {
+        "rows": 41341,
+        "accuracy": 0.5191940204639462,
+        "balanced_accuracy": 0.5029824289118422,
+        "auc": 0.5051519128126885,
+        "brier": 0.25118374818835554,
+        "log_loss": 0.6956446813955787,
+        "up_rate": 0.5290147795167025,
+        "predicts_one_class": false,
+        "auc_ci95": [
+          0.4949935641618533,
+          0.5174695729723197
+        ]
+      },
+      "backtest_avg": {
+        "total_return": 5.124031824737257,
+        "cagr": 0.1093606251897542,
+        "sharpe": 0.5504274283080199,
+        "max_drawdown": -0.4979687933893121,
+        "exposure": 0.8364329075136494,
+        "trades": 118.8
+      },
+      "per_asset": {
+        "RELIANCE": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 4.257217607614897,
+            "cagr": 0.10646014865611941,
+            "sharpe": 0.5361554992520098,
+            "max_drawdown": -0.44082858949497516,
+            "exposure": 0.8553459119496856,
+            "trades": 105
+          },
+          "buy_and_hold": {
+            "total_return": 4.482059015003545,
+            "cagr": 0.10928838067942692,
+            "sharpe": 0.5195189824460047,
+            "max_drawdown": -0.4508835364245183,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5244315432994678
+        },
+        "TCS": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 5.611413786507778,
+            "cagr": 0.12202731202998685,
+            "sharpe": 0.6257357282998253,
+            "max_drawdown": -0.5616238595551748,
+            "exposure": 0.8671988388969522,
+            "trades": 109
+          },
+          "buy_and_hold": {
+            "total_return": 5.617766801435364,
+            "cagr": 0.12209300564640846,
+            "sharpe": 0.5867810431260552,
+            "max_drawdown": -0.5646225691823361,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5307208514755685
+        },
+        "HDFCBANK": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 4.350438255210418,
+            "cagr": 0.10764627893926182,
+            "sharpe": 0.586187672247025,
+            "max_drawdown": -0.4105497559765382,
+            "exposure": 0.8819545234639574,
+            "trades": 97
+          },
+          "buy_and_hold": {
+            "total_return": 8.03344509983818,
+            "cagr": 0.14358072339225947,
+            "sharpe": 0.6994433647252101,
+            "max_drawdown": -0.41054975597653864,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5237058538945332
+        },
+        "INFY": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 0.8050100448322566,
+            "cagr": 0.036655513353544444,
+            "sharpe": 0.2707968195084632,
+            "max_drawdown": -0.4840488967239689,
+            "exposure": 0.8001935171746493,
+            "trades": 113
+          },
+          "buy_and_hold": {
+            "total_return": 2.645970353211493,
+            "cagr": 0.08204906576659665,
+            "sharpe": 0.42586524245629165,
+            "max_drawdown": -0.5072760854869456,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5261248185776488
+        },
+        "ICICIBANK": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 3.944425726933768,
+            "cagr": 0.10233057121534261,
+            "sharpe": 0.49285056520054765,
+            "max_drawdown": -0.5389791795828076,
+            "exposure": 0.7963231736816643,
+            "trades": 143
+          },
+          "buy_and_hold": {
+            "total_return": 8.432829992031689,
+            "cagr": 0.14660053418999897,
+            "sharpe": 0.5992446896770061,
+            "max_drawdown": -0.5234995411039731,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5147556845670053
+        },
+        "HINDUNILVR": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 9.221144133115407,
+            "cagr": 0.15222416824963836,
+            "sharpe": 0.7712153057307395,
+            "max_drawdown": -0.4008023899509068,
+            "exposure": 0.8502660861151428,
+            "trades": 89
+          },
+          "buy_and_hold": {
+            "total_return": 7.1597191526390365,
+            "cagr": 0.1365114500466349,
+            "sharpe": 0.6664982217452902,
+            "max_drawdown": -0.4008023899509081,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5041122399612966
+        },
+        "ITC": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 2.2737139125538617,
+            "cagr": 0.07494987469372605,
+            "sharpe": 0.4345850883641441,
+            "max_drawdown": -0.5166506336398313,
+            "exposure": 0.8636033857315598,
+            "trades": 115
+          },
+          "buy_and_hold": {
+            "total_return": 2.487311231098188,
+            "cagr": 0.07909853373870424,
+            "sharpe": 0.43562920415070544,
+            "max_drawdown": -0.5700729612256521,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.4989117291414752
+        },
+        "SBIN": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 4.945841333188889,
+            "cagr": 0.11479349438869502,
+            "sharpe": 0.5169471791628066,
+            "max_drawdown": -0.6597871617816963,
+            "exposure": 0.8270440251572327,
+            "trades": 153
+          },
+          "buy_and_hold": {
+            "total_return": 3.7602838790592426,
+            "cagr": 0.09978320309941702,
+            "sharpe": 0.45567305190172047,
+            "max_drawdown": -0.5949247890013472,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5227382680212869
+        },
+        "BHARTIARTL": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 11.085795275805589,
+            "cagr": 0.16405429150548745,
+            "sharpe": 0.7315521200983753,
+            "max_drawdown": -0.444400716458243,
+            "exposure": 0.7525399129172714,
+            "trades": 147
+          },
+          "buy_and_hold": {
+            "total_return": 6.487364797280286,
+            "cagr": 0.13056950784199972,
+            "sharpe": 0.5599594579474563,
+            "max_drawdown": -0.4746870386913752,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5234639574262215
+        },
+        "LT": {
+          "from": "2010-01-29",
+          "to": "2026-11-04",
+          "strategy": {
+            "total_return": 4.745318171609706,
+            "cagr": 0.11246459886574,
+            "sharpe": 0.5382483052162637,
+            "max_drawdown": -0.5220167507289788,
+            "exposure": 0.8698597000483793,
+            "trades": 117
+          },
+          "buy_and_hold": {
+            "total_return": 5.233030184047049,
+            "cagr": 0.11800360555950262,
+            "sharpe": 0.5379344901372496,
+            "max_drawdown": -0.556453618788182,
+            "exposure": 1.0,
+            "trades": 1
+          },
+          "accuracy": 0.5229801644895985
+        }
+      }
+    }
+  },
+  "buy_and_hold_avg": {
+    "total_return": 5.4339780505644075,
+    "cagr": 0.1167578009960949,
+    "sharpe": 0.5486547748312989,
+    "max_drawdown": -0.5053772285831776
+  },
+  "selected_model": "random_forest",
+  "has_reliable_edge": false
+}

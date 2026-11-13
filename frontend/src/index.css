@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+/* Dark mode follows the data-theme attribute on <html>, set by ThemeProvider. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ------------------------------------------------------------------ */
+/* Design tokens. Light = white/grey, dark = dark blue/black.          */
+/* ------------------------------------------------------------------ */
+:root {
+  color-scheme: light;
+  --page: #f3f4f6;
+  --surface: #ffffff;
+  --surface-2: #f9fafb;
+  --border: #e5e7eb;
+  --ink: #111827;
+  --ink-2: #4b5563;
+  --muted: #6b7280;
+  --brand: #00a878;
+  --brand-ink: #00704f;
+  --brand-soft: #e6f7f1;
+
+  /* Charts (validated with the dataviz palette checker against --surface). */
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --grid: #e5e7eb;
+  --axis: #9ca3af;
+
+  /* Status colours always ship with an icon and a text label. */
+  --good: #0ca30c;
+  --good-ink: #006300;
+  --good-soft: #e7f6e7;
+  --warn: #fab219;
+  --warn-ink: #8a5a00;
+  --warn-soft: #fef4dd;
+  --bad: #d03b3b;
+  --bad-ink: #b42323;
+  --bad-soft: #fbe9e9;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #05080f;
+  --surface: #111a2e;
+  --surface-2: #16213a;
+  --border: #1f2b45;
+  --ink: #e6ebf5;
+  --ink-2: #aab4c8;
+  --muted: #7f8ba3;
+  --brand: #00d094;
+  --brand-ink: #3ee0ae;
+  --brand-soft: #0b2b2a;
+
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --grid: #1f2b45;
+  --axis: #5b6782;
+
+  --good: #0ca30c;
+  --good-ink: #3fc23f;
+  --good-soft: #0f2a1c;
+  --warn: #fab219;
+  --warn-ink: #fab219;
+  --warn-soft: #2e2611;
+  --bad: #d03b3b;
+  --bad-ink: #f07070;
+  --bad-soft: #2f1620;
+}
+
+@theme inline {
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--border);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-soft: var(--brand-soft);
+  --color-series-1: var(--series-1);
+  --color-series-2: var(--series-2);
+  --color-good: var(--good);
+  --color-good-ink: var(--good-ink);
+  --color-good-soft: var(--good-soft);
+  --color-warn: var(--warn);
+  --color-warn-ink: var(--warn-ink);
+  --color-warn-soft: var(--warn-soft);
+  --color-bad: var(--bad);
+  --color-bad-ink: var(--bad-ink);
+  --color-bad-soft: var(--bad-soft);
+}
+
+@theme {
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --animate-fade-in: fade-in 0.2s ease-out;
+  --animate-slide-up: slide-up 0.2s ease-out;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@utility card {
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  background-color: var(--surface);
+}
+
+@layer base {
+  body {
+    @apply bg-page font-sans text-ink antialiased;
+  }
+  /* Numbers that line up in columns (tables, axis ticks). */
+  table { font-variant-numeric: tabular-nums; }
+  :focus-visible {
+    outline: 2px solid var(--series-1);
+    outline-offset: 2px;
+  }
+  button { cursor: pointer; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+}

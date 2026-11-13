@@ -1,0 +1,11 @@
+# Versions verified on Python 3.14 / Windows 11 (Smart App Control turned off on 2026-11-13).
+# PyTorch is the CPU-only build, for the LSTM/GRU models. pip needs its index for that:
+#   .venv\Scripts\python -m pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu
+numpy==2.5.4
+scipy==1.18.1
+scikit-learn==1.9.1
+joblib==1.6.0
+requests==2.34.2
+yfinance==1.8.0
+torch==2.15.0+cpu
+xgboost==3.4.1

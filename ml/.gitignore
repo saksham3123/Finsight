@@ -1,0 +1,6 @@
+.venv/
+.env
+__pycache__/
+# Downloaded market data and trained models are reproducible with `python -m finsight_ml all`.
+data/
+models/
