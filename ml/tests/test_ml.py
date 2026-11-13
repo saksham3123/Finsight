@@ -11,8 +11,9 @@ from finsight_ml.evaluation import (auc_confidence_interval, backtest, classific
 from finsight_ml.features import FEATURE_NAMES, WARMUP, build_dataset, compute_features, compute_target
 from finsight_ml.models import AlwaysUp, SmaTrend, gradient_boosting, logistic, random_forest, xgboost
 from finsight_ml.sequence import RecurrentClassifier, sequence_windows
-from finsight_ml.range_pipeline import earnings_window_flags
-from finsight_ml.ranges import EarningsScaledQuantiles, QuantileTrees, ScaledQuantiles, fit_garch, garch_scale, interval_score, range_metrics, skill_interval
+from finsight_ml.range_pipeline import coverage_tests, earnings_window_flags, holdout_check
+from finsight_ml.ranges import (EarningsScaledQuantiles, QuantileTrees, ScaledQuantiles, christoffersen_test, fit_garch, garch_scale, interval_score,
+                                kupiec_test, range_metrics, skill_interval)
 from finsight_ml.signals import confidence, to_signal
 
 
@@ -302,6 +303,53 @@ class RangeTests(unittest.TestCase):
         point, ci = skill_interval(score, score, np.repeat(np.arange(10), 50))
         self.assertEqual(point, 0.0)
         self.assertEqual(ci, [0.0, 0.0])
+
+    def test_holdout_check_selects_before_the_holdout_and_scores_only_on_it(self):
+        # 4 years of daily forecasts. "early" is the better model before the last 2 years and far
+        # worse inside them; "late" is the opposite. Selection must not see the hold-out years.
+        n = 1461
+        dates = np.array([str(np.datetime64("2020-01-01") + np.timedelta64(i, "D")) for i in range(n)])
+        targets = np.array([str(np.datetime64(d) + np.timedelta64(5, "D")) for d in dates])
+        y = np.zeros(n)
+        last_two_years = dates >= "2022-01-01"
+        half = {"constant": np.full(n, 0.5), "early": np.where(last_two_years, 2.0, 0.1), "late": np.where(last_two_years, 0.1, 2.0)}
+        lo, hi = {k: -v for k, v in half.items()}, half
+        check = holdout_check(lo, hi, y, dates, targets, np.arange(n) // 63, years=2)
+        self.assertEqual(check["selected_model"], "early")
+        self.assertLess(check["selection_period"]["to"], check["period"]["from"])  # outcomes known before the hold-out
+        self.assertAlmostEqual(check["results"]["early"]["interval_score"], 4.0, delta=0.05)  # scored on the hold-out only
+        self.assertFalse(check["has_reliable_skill"])  # the model chosen earlier is worse than constant there
+        self.assertAlmostEqual(check["results"]["late"]["skill_vs_constant"], 0.8, delta=0.02)
+
+    def test_kupiec_accepts_the_nominal_miss_rate_and_rejects_a_wrong_one(self):
+        rng = np.random.default_rng(6)
+        calibrated = kupiec_test(rng.random(5000) < 0.2)
+        self.assertGreater(calibrated["p_uc"], 0.05)
+        self.assertLess(kupiec_test(rng.random(5000) < 0.3)["p_uc"], 0.001)  # 70% coverage sold as 80%
+        # Exactly the nominal rate gives a statistic of zero.
+        self.assertAlmostEqual(kupiec_test(np.arange(1000) % 5 == 0)["lr_uc"], 0.0, places=9)
+
+    def test_christoffersen_rejects_clustered_misses_with_the_right_rate(self):
+        independent = christoffersen_test(np.random.default_rng(7).random(5000) < 0.2)
+        self.assertGreater(independent["p_ind"], 0.05)
+        clustered = np.repeat(np.arange(1000) % 5 == 0, 5)  # exactly 20% misses, but in runs of five
+        result = christoffersen_test(clustered)
+        self.assertAlmostEqual(result["p_uc"], 1.0)
+        self.assertLess(result["p_ind"], 0.001)
+        self.assertLess(result["p_cc"], 0.001)
+
+    def test_coverage_tests_use_non_overlapping_windows_per_asset(self):
+        n = 1000
+        symbols = np.repeat(np.array(["A", "B"]), n)
+        row_index = np.tile(np.arange(n), 2)
+        y = np.zeros(2 * n)
+        miss = np.tile(np.arange(n) % 5 == 0, 2)  # a miss on every 5th day: every sampled window misses
+        lo = {"m": np.where(miss, 1.0, -1.0)}
+        hi = {"m": np.full(2 * n, 2.0)}
+        result = coverage_tests(lo, hi, y, symbols, row_index, np.ones(2 * n, dtype=bool))["m"]
+        self.assertEqual(result["forecasts"], 2 * n // 5)
+        self.assertEqual(result["coverage"], 0.0)
+        self.assertEqual(result["rejected_uc"], 2)
 
 
 if __name__ == "__main__":

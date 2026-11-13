@@ -67,6 +67,12 @@ HIGH_RISK_VOLATILITY = 0.85  # annualised; same cut-off as the backend's baselin
 MIN_TRAIN_DAYS = 500   # distinct dates of history before the first test window
 TEST_WINDOW_DAYS = 63  # retrain every ~quarter (63 trading days)
 COST_PER_TRADE = 0.001  # 0.1% per position change (brokerage/exchange fee estimate)
+HOLDOUT_YEARS = 2      # final stretch of the test period kept out of range-model selection
+# Nominal level of the range forecasts. The app uses 0.8. Setting the RANGE_LEVEL environment
+# variable (e.g. 0.9) re-runs `range-evaluate` at another level as a robustness check; those
+# results go to separate files (reports/range_<type>_90.json) and are never trained or published.
+DEFAULT_RANGE_LEVEL = 0.8
+RANGE_LEVEL = float(os.environ.get("RANGE_LEVEL", DEFAULT_RANGE_LEVEL))
 
 MODEL_VERSION_PREFIX = "ml-5d"
 RANDOM_STATE = 42

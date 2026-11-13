@@ -44,4 +44,4 @@ Stock data comes from Yahoo Finance through the unofficial `yfinance` library (r
 | Signals | `signals.py` | Volatility ≥ 85% (annualised) → `high_risk`. Otherwise P(up) ≥ 0.55 → `buy`, ≤ 0.45 → `sell`, within 0.03 of either threshold → `watch`, and anything else → `hold`. |
 | Publish | `publish.py` | Replaces the backend's prices with the real history, then upserts today's advisories, using the `X-Service-Key` header. |
 
-Design decisions are in `docs/DECISIONS.md`, viva questions in `docs/VIVA_NOTES.md`, and the latest results in `reports/EVALUATION.md`.
+The latest results are in `reports/EVALUATION.md`.

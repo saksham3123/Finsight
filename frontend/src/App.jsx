@@ -7,7 +7,6 @@ import { readStorage, STORAGE_KEYS } from "./utils/storage";
 // Each page is its own chunk, loaded on first visit.
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Markets = lazy(() => import("./pages/Markets"));
-const Ipos = lazy(() => import("./pages/Ipos"));
 const Sip = lazy(() => import("./pages/Sip"));
 const Profile = lazy(() => import("./pages/Profile"));
 const Settings = lazy(() => import("./pages/Settings"));
@@ -59,7 +58,6 @@ export default function App() {
             <Route path="stocks/:symbol" element={<Markets key="stock" type="stock" />} />
             <Route path="crypto" element={<Markets key="crypto" type="crypto" />} />
             <Route path="crypto/:symbol" element={<Markets key="crypto" type="crypto" />} />
-            <Route path="ipos" element={<Ipos />} />
             <Route path="sip" element={<Sip />} />
             <Route path="profile" element={<Profile />} />
             <Route path="settings" element={<Settings />} />

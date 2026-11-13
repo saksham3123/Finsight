@@ -100,6 +100,42 @@ Earnings-aware models against the same model without earnings (9.6% of test days
 
 Selected model: **Quantile gradient boosting + earnings** (lowest interval score). ✅ **Reliable skill**: its interval score is 6.2% better than a constant range, and the 95% interval (4.8% to 7.7%) excludes zero.
 
+### Hold-out check (2024-11-04 → 2026-11-03)
+
+The table above picks the winner on the same days it is scored on. Here the winner is picked on 2010-01-29 → 2024-10-25 only, and every model is scored on the final 2 years (4931 forecasts), which played no part in the choice.
+
+| Model | Interval score in selection period | Hold-out coverage | Hold-out avg. width | Hold-out interval score | Hold-out skill vs constant (95% CI) |
+|---|---|---|---|---|---|
+| Constant range (baseline) | 0.1438 | 88.2% | 9.5% | 0.1201 | +0.0% (+0.0 to +0.0) |
+| Historical volatility (20-day) | 0.1396 | 79.7% | 7.9% | 0.1152 | +4.0% (+0.1 to +8.8) |
+| GARCH(1,1) | 0.1362 | 82.8% | 8.2% | 0.1141 | +5.0% (+1.2 to +9.4) |
+| Quantile gradient boosting | 0.1360 | 83.2% | 8.2% | 0.1140 | +5.1% (+1.3 to +10.2) |
+| Quantile XGBoost | 0.1365 | 82.8% | 8.2% | 0.1138 | +5.2% (+1.5 to +10.2) |
+| Quantile LSTM | 0.1368 | 82.9% | 8.2% | 0.1140 | +5.1% (+1.4 to +9.6) |
+| Historical volatility + earnings | 0.1384 | 79.7% | 7.9% | 0.1139 | +5.2% (+0.8 to +10.4) |
+| GARCH(1,1) + earnings | 0.1351 | 83.0% | 8.2% | 0.1128 | +6.0% (+2.1 to +10.7) |
+| Quantile gradient boosting + earnings ✅ | 0.1350 | 83.2% | 8.3% | 0.1127 | +6.2% (+2.3 to +11.4) |
+| Quantile XGBoost + earnings | 0.1357 | 82.7% | 8.2% | 0.1128 | +6.1% (+2.3 to +11.1) |
+
+Chosen without the hold-out years: **Quantile gradient boosting + earnings** (the same model as on the full period). On the hold-out it covered 83.2% of closes and scored +6.2% (+2.3 to +11.4) against the constant range. ✅ The skill holds on unseen years: the 95% interval excludes zero.
+
+### Coverage tests
+
+Kupiec (right share of misses) and Christoffersen (misses not clustered; both together) tests at the 5% level, run for each of the 10 assets on every 5th forecast so that windows don't overlap. The table counts the assets where a test rejects; with no real problem, about 1 in 20 tests rejects by chance.
+
+| Model | Forecasts tested | Coverage | Kupiec rejects | Independence rejects | Conditional coverage rejects |
+|---|---|---|---|---|---|
+| Constant range (baseline) | 8270 | 87.7% | 9 of 10 | 3 of 10 | 9 of 10 |
+| Historical volatility (20-day) | 8270 | 79.1% | 2 of 10 | 1 of 10 | 2 of 10 |
+| GARCH(1,1) | 8270 | 82.6% | 4 of 10 | 1 of 10 | 4 of 10 |
+| Quantile gradient boosting | 8270 | 81.1% | 4 of 10 | 0 of 10 | 4 of 10 |
+| Quantile XGBoost | 8270 | 81.3% | 4 of 10 | 1 of 10 | 3 of 10 |
+| Quantile LSTM | 8270 | 80.8% | 3 of 10 | 0 of 10 | 3 of 10 |
+| Historical volatility + earnings | 8270 | 79.0% | 2 of 10 | 1 of 10 | 2 of 10 |
+| GARCH(1,1) + earnings | 8270 | 82.4% | 4 of 10 | 1 of 10 | 4 of 10 |
+| Quantile gradient boosting + earnings ✅ | 8270 | 80.7% | 4 of 10 | 1 of 10 | 3 of 10 |
+| Quantile XGBoost + earnings | 8270 | 81.0% | 3 of 10 | 1 of 10 | 2 of 10 |
+
 ## Cryptos — ranges
 
 Out-of-sample period: 2019-09-08 → 2026-11-06.
@@ -114,4 +150,32 @@ Out-of-sample period: 2019-09-08 → 2026-11-06.
 | Quantile LSTM | 77.7% | 11.3% / 11.0% | 19.9% | 0.3473 | +0.9% (-1.7 to +3.4) | +2.7% (+0.7 to +5.1) |
 
 Selected model: **GARCH(1,1)** (lowest interval score). ✅ **Reliable skill**: its interval score is 3.1% better than a constant range, and the 95% interval (1.4% to 4.8%) excludes zero.
+
+### Hold-out check (2024-11-06 → 2026-11-06)
+
+The table above picks the winner on the same days it is scored on. Here the winner is picked on 2019-09-08 → 2024-10-31 only, and every model is scored on the final 2 years (3655 forecasts), which played no part in the choice.
+
+| Model | Interval score in selection period | Hold-out coverage | Hold-out avg. width | Hold-out interval score | Hold-out skill vs constant (95% CI) |
+|---|---|---|---|---|---|
+| Constant range (baseline) | 0.3776 | 87.9% | 21.3% | 0.2840 | +0.0% (+0.0 to +0.0) |
+| Historical volatility (20-day) | 0.3868 | 80.6% | 18.5% | 0.2821 | +0.7% (-4.8 to +6.5) |
+| GARCH(1,1) ✅ | 0.3675 | 84.5% | 19.2% | 0.2703 | +4.8% (+1.5 to +8.5) |
+| Quantile gradient boosting | 0.3732 | 83.2% | 18.3% | 0.2704 | +4.8% (+0.7 to +8.8) |
+| Quantile XGBoost | 0.3700 | 83.2% | 18.4% | 0.2701 | +4.9% (+1.2 to +9.0) |
+| Quantile LSTM | 0.3762 | 83.3% | 19.0% | 0.2744 | +3.4% (-1.1 to +8.0) |
+
+Chosen without the hold-out years: **GARCH(1,1)** (the same model as on the full period). On the hold-out it covered 84.5% of closes and scored +4.8% (+1.5 to +8.5) against the constant range. ✅ The skill holds on unseen years: the 95% interval excludes zero.
+
+### Coverage tests
+
+Kupiec (right share of misses) and Christoffersen (misses not clustered; both together) tests at the 5% level, run for each of the 5 assets on every 5th forecast so that windows don't overlap. The table counts the assets where a test rejects; with no real problem, about 1 in 20 tests rejects by chance.
+
+| Model | Forecasts tested | Coverage | Kupiec rejects | Independence rejects | Conditional coverage rejects |
+|---|---|---|---|---|---|
+| Constant range (baseline) | 2502 | 83.7% | 4 of 5 | 2 of 5 | 4 of 5 |
+| Historical volatility (20-day) | 2502 | 79.9% | 0 of 5 | 2 of 5 | 1 of 5 |
+| GARCH(1,1) ✅ | 2502 | 83.7% | 3 of 5 | 0 of 5 | 2 of 5 |
+| Quantile gradient boosting | 2502 | 79.5% | 1 of 5 | 0 of 5 | 0 of 5 |
+| Quantile XGBoost | 2502 | 81.3% | 1 of 5 | 0 of 5 | 1 of 5 |
+| Quantile LSTM | 2502 | 77.7% | 1 of 5 | 1 of 5 | 1 of 5 |
 

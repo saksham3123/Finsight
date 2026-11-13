@@ -88,7 +88,7 @@ function PriceChart({ quote, advisory }) {
     return { high: Math.max(...prices), low: Math.min(...prices), ret: ((last - first) / first) * 100 };
   }, [data]);
 
-  // The cone starts at the last close, so only draw it when the chart ends on that close.
+  // The forecast box starts at the last close, so only draw it when the chart ends on that close.
   const lastDate = data?.[data.length - 1]?.date;
   const forecast = lastDate === quote.priceDate ? chartForecast(advisory, lastDate, quote.assetType) : null;
 
@@ -115,7 +115,7 @@ function PriceChart({ quote, advisory }) {
               formatLabel={(d) => formatDate(d, true)}
               height={340}
               forecast={forecast}
-              caption={forecast ? `Dashed band: the model's ${forecast.label} for the close over the next ${forecast.dates.length} trading days.` : undefined}
+              caption={forecast ? `Dashed box: the model's ${forecast.label} for the close ${forecast.dates.length} trading days from now.` : undefined}
               overlay={
                 <ChartHint>
                   Hover over the chart (or tap it on a phone) to see the closing price for any day. Switch the range with the
@@ -174,7 +174,7 @@ function AdvisoryPanel({ detail, quote }) {
           <p className="text-sm leading-relaxed text-ink-2">{advisory.rationale}</p>
           <dl className="mt-4 grid grid-cols-3 gap-3 border-t border-line pt-4 text-xs">
             <div>
-              <dt className="text-muted">Confidence</dt>
+              <dt className="text-muted">Direction confidence</dt>
               <dd className="mt-0.5 font-semibold text-ink">{advisory.confidence != null ? `${Math.round(advisory.confidence * 100)}%` : "—"}</dd>
             </div>
             <div>

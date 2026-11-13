@@ -37,6 +37,6 @@ const dateLong = new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "shor
 
 export const formatDate = (iso, long = false) => (long ? dateLong : dateShort).format(new Date(iso));
 
-// INR shorthands, kept for the SIP calculator and IPO pages which are rupee-only.
+// INR shorthands, kept for the SIP calculator, which is rupee-only.
 export const formatINR = (n, opts) => formatMoney(n, "INR", opts);
 export const formatINRCompact = (n) => formatMoneyCompact(n, "INR");

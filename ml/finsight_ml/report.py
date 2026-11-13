@@ -76,6 +76,63 @@ def write_markdown() -> str:
 
 
 
+def _holdout_lines(r: dict) -> list[str]:
+    """Hold-out check: the model is chosen on earlier days and scored on the final years only."""
+    h = r.get("holdout")
+    if not h:
+        return []
+    ci = lambda m: f"{m['skill_vs_constant'] * 100:+.1f}% ({m['skill_vs_constant_ci95'][0] * 100:+.1f} to {m['skill_vs_constant_ci95'][1] * 100:+.1f})"
+    lines = [
+        f"### Hold-out check ({h['period']['from']} → {h['period']['to']})",
+        "",
+        f"The table above picks the winner on the same days it is scored on. Here the winner is picked on "
+        f"{h['selection_period']['from']} → {h['selection_period']['to']} only, and every model is scored on the final "
+        f"{h['years']:g} years ({h['period']['rows']} forecasts), which played no part in the choice.",
+        "",
+        "| Model | Interval score in selection period | Hold-out coverage | Hold-out avg. width | Hold-out interval score | Hold-out skill vs constant (95% CI) |",
+        "|---|---|---|---|---|---|",
+    ]
+    for name, m in h["results"].items():
+        marker = " ✅" if name == h["selected_model"] else ""
+        lines.append(f"| {RANGE_LABELS.get(name, name)}{marker} | {m['selection_interval_score']:.4f} | {_pct(m['coverage'])} | "
+                     f"{m['mean_width_pct']:.1f}% | {m['interval_score']:.4f} | {ci(m)} |")
+    sel = h["results"][h["selected_model"]]
+    same = "the same model as on the full period" if h["selected_model"] == r["selected_model"] else f"not the full-period choice ({RANGE_LABELS[r['selected_model']]})"
+    lines += [
+        "",
+        f"Chosen without the hold-out years: **{RANGE_LABELS[h['selected_model']]}** ({same}). On the hold-out it covered "
+        f"{_pct(sel['coverage'])} of closes and scored {ci(sel)} against the constant range. "
+        + ("✅ The skill holds on unseen years: the 95% interval excludes zero." if h["has_reliable_skill"] else
+           "⚠️ On these years alone the 95% interval includes zero, so the skill is not confirmed on the hold-out."),
+        "",
+    ]
+    return lines
+
+
+def _coverage_test_lines(r: dict) -> list[str]:
+    """Formal coverage tests, per asset on non-overlapping windows."""
+    tests = r.get("coverage_tests")
+    if not tests:
+        return []
+    assets = next(iter(tests.values()))["assets"]
+    lines = [
+        "### Coverage tests",
+        "",
+        f"Kupiec (right share of misses) and Christoffersen (misses not clustered; both together) tests at the 5% level, run "
+        f"for each of the {assets} assets on every {r['horizon_days']}th forecast so that windows don't overlap. The table counts the "
+        "assets where a test rejects; with no real problem, about 1 in 20 tests rejects by chance.",
+        "",
+        "| Model | Forecasts tested | Coverage | Kupiec rejects | Independence rejects | Conditional coverage rejects |",
+        "|---|---|---|---|---|---|",
+    ]
+    for name, t in tests.items():
+        marker = " ✅" if name == r["selected_model"] else ""
+        lines.append(f"| {RANGE_LABELS.get(name, name)}{marker} | {t['forecasts']} | {_pct(t['coverage'])} | "
+                     f"{t['rejected_uc']} of {assets} | {t['rejected_ind']} of {assets} | {t['rejected_cc']} of {assets} |")
+    lines.append("")
+    return lines
+
+
 def _range_section() -> list[str]:
     """80% range forecasts: coverage should be near 80%; a lower interval score is better."""
     lines = []
@@ -140,4 +197,6 @@ def _range_section() -> list[str]:
                "⚠️ No reliable skill over a constant range: the 95% interval of the improvement includes zero."),
             "",
         ]
+        lines += _holdout_lines(r)
+        lines += _coverage_test_lines(r)
     return lines

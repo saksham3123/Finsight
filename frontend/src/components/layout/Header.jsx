@@ -8,7 +8,6 @@ import { useAuth } from "../../context/AuthContext";
 export const NAV = [
   { to: "/", label: "Dashboard", end: true },
   { to: "/stocks", label: "Stocks" },
-  { to: "/ipos", label: "IPOs" },
   { to: "/sip", label: "SIP" },
   { to: "/crypto", label: "Crypto" },
 ];

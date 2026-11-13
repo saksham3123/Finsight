@@ -7,11 +7,6 @@ export const CHAT_RULES = [
       "A SIP invests a fixed amount every month, so you buy more units when prices are low. Try the SIP page to see how ₹5,000 a month could grow at your expected return.",
   },
   {
-    keywords: ["ipo"],
-    reply:
-      "Two IPOs are open right now: Northwind Renewables and Saffron Foods. Check the IPOs page for price bands, lot sizes and subscription so far.",
-  },
-  {
     keywords: ["portfolio", "holding", "my stocks"],
     reply:
       "Your portfolio is mostly large-cap Indian stocks with a small crypto allocation. RELIANCE is your biggest gainer; INFY and ETH are below their average cost.",
@@ -33,11 +28,11 @@ export const CHAT_RULES = [
   },
   {
     keywords: ["hello", "hi", "hey"],
-    reply: "Hi! I'm the FinSight assistant. Ask me about your portfolio, SIPs, IPOs or any stock on the Stocks page.",
+    reply: "Hi! I'm the FinSight assistant. Ask me about your portfolio, SIPs or any stock on the Stocks page.",
   },
 ];
 
 export const FALLBACK_REPLY =
-  "I'm a demo assistant for now, so I can only answer questions about your portfolio, SIPs, IPOs, crypto and risk. Try asking about one of those.";
+  "I'm a demo assistant for now, so I can only answer questions about your portfolio, SIPs, crypto and risk. Try asking about one of those.";
 
 export const DISCLAIMER = "FinSight's assistant gives general information, not financial advice.";

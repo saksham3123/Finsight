@@ -56,7 +56,5 @@ src/
   utils/            validation, errors, camelCase serialisation
 scripts/            command-line tasks (migrate, seed, import, run SIPs, ...)
 tests/              node:test API tests
-docs/               API.md, DECISIONS.md, VIVA_NOTES.md, FinSight_Backend_Research.docx
 ```
 
-See `docs/API.md` for every endpoint and `docs/DECISIONS.md` for why things are built this way.

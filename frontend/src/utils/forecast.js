@@ -1,6 +1,6 @@
 /**
- * The next `days` trading dates after `lastDate` (YYYY-MM-DD), for drawing a forecast cone.
- * Stocks skip weekends (exchange holidays are ignored, so the cone can end a day early around a
+ * The next `days` trading dates after `lastDate` (YYYY-MM-DD), for drawing a forecast box.
+ * Stocks skip weekends (exchange holidays are ignored, so the box can end a day early around a
  * holiday); crypto trades every day.
  */
 export function futureDates(lastDate, days, assetType) {

@@ -25,16 +25,18 @@ import numpy as np
 import torch
 from scipy.optimize import minimize
 from scipy.signal import lfilter
+from scipy.special import xlogy
+from scipy.stats import chi2
 from sklearn.ensemble import HistGradientBoostingRegressor
 from torch import nn
 from xgboost import XGBRegressor
 
-from .config import HORIZON, RANDOM_STATE
+from .config import HORIZON, RANDOM_STATE, RANGE_LEVEL
 from .features import FEATURE_NAMES
 
-LEVEL = 0.8
-QUANTILES = (0.1, 0.9)  # central 80% interval
-ALPHA = 1 - LEVEL
+LEVEL = RANGE_LEVEL
+ALPHA = round(1 - LEVEL, 10)
+QUANTILES = (round(ALPHA / 2, 10), round(1 - ALPHA / 2, 10))  # central interval: (0.1, 0.9) at the default 80% level
 VOL20 = FEATURE_NAMES.index("vol_20")
 
 
@@ -283,6 +285,34 @@ def range_metrics(lo, hi, y):
         "mean_width_pct": float(np.mean(np.exp(hi) - np.exp(lo)) * 100),
         "interval_score": float(np.mean(interval_score(lo, hi, y))),
     }
+
+
+def kupiec_test(miss: np.ndarray, level: float = LEVEL) -> dict:
+    """Kupiec's unconditional-coverage test: is the share of misses consistent with 1 − level?
+    Likelihood ratio against the observed miss rate, χ²(1). A small p-value rejects calibration."""
+    n, x = len(miss), int(np.sum(miss))
+    p, rate = 1 - level, x / n
+    lr = -2 * ((xlogy(n - x, 1 - p) + xlogy(x, p)) - (xlogy(n - x, 1 - rate) + xlogy(x, rate)))
+    return {"n": n, "misses": x, "coverage": 1 - rate, "lr_uc": float(lr), "p_uc": float(chi2.sf(lr, 1))}
+
+
+def christoffersen_test(miss: np.ndarray, level: float = LEVEL) -> dict:
+    """Christoffersen's tests on a time-ordered miss sequence. Independence: a miss should be no
+    more likely after a miss than after a hit (first-order Markov alternative, χ²(1)). Conditional
+    coverage adds Kupiec's statistic (χ²(2)): the right number of misses, and not in clusters."""
+    result = kupiec_test(miss, level)
+    m = np.asarray(miss, dtype=bool)
+    prev, cur = m[:-1], m[1:]
+    n00, n01 = np.sum(~prev & ~cur), np.sum(~prev & cur)
+    n10, n11 = np.sum(prev & ~cur), np.sum(prev & cur)
+    pi01, pi11 = n01 / max(n00 + n01, 1), n11 / max(n10 + n11, 1)
+    pi = (n01 + n11) / max(len(cur), 1)
+    pooled = xlogy(n00 + n10, 1 - pi) + xlogy(n01 + n11, pi)
+    markov = xlogy(n00, 1 - pi01) + xlogy(n01, pi01) + xlogy(n10, 1 - pi11) + xlogy(n11, pi11)
+    lr_ind = max(float(-2 * (pooled - markov)), 0.0)
+    result.update({"lr_ind": lr_ind, "p_ind": float(chi2.sf(lr_ind, 1)),
+                   "lr_cc": result["lr_uc"] + lr_ind, "p_cc": float(chi2.sf(result["lr_uc"] + lr_ind, 2))})
+    return result
 
 
 def skill_interval(score_model, score_base, fold_ids, n_boot=500, seed=0):

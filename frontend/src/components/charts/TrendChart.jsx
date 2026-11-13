@@ -1,5 +1,5 @@
 import { useId, useState } from "react";
-import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Area, AreaChart, CartesianGrid, ReferenceArea, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { FaChartLine, FaTable } from "react-icons/fa6";
 
 const tick = { fill: "var(--muted)", fontSize: 12 };
@@ -43,27 +43,23 @@ function EndLabel({ x, y, index, last, text }) {
 }
 
 /**
- * Future points for a forecast cone after the last data point. The band starts at the last value
- * and widens with the square root of time (how return volatility scales) to [low, high] on the
- * final day, so intermediate days show a consistent, narrower range.
+ * Future points for a forecast box after the last data point: a flat [low, high] band from the
+ * last close to the final day. The model only forecasts the close on the final day, so the box
+ * shows that one range rather than inventing narrower ranges for the days in between.
  */
 function forecastPoints(data, xKey, valueKey, forecast) {
   const last = data[data.length - 1];
-  const start = last?.[valueKey];
-  if (!forecast || !start) return data;
-  const n = forecast.dates.length;
-  const future = forecast.dates.map((date, i) => {
-    const t = Math.sqrt((i + 1) / n);
-    return { [xKey]: date, future: true, band: [start * (forecast.low / start) ** t, start * (forecast.high / start) ** t] };
-  });
-  return [...data.slice(0, -1), { ...last, band: [start, start] }, ...future];
+  if (!forecast || !last?.[valueKey]) return data;
+  const band = [forecast.low, forecast.high];
+  const future = forecast.dates.map((date) => ({ [xKey]: date, future: true, band }));
+  return [...data.slice(0, -1), { ...last, band }, ...future];
 }
 
 /**
  * Time-series area chart with a hover crosshair and a table view of the same data.
  * series: [{ key, label, color }]. One series needs no legend; two or more get one.
  * forecast (optional, single series only): { low, high, dates: [future x values], label } draws
- * a shaded range cone after the last point. The table view lists real data only.
+ * a shaded range box after the last point. The table view lists real data only.
  */
 export default function TrendChart({
   data,
@@ -82,7 +78,7 @@ export default function TrendChart({
   const chartData = forecast && series.length === 1 ? forecastPoints(data, xKey, series[0].key, forecast) : data;
   const gradientId = useId().replace(/:/g, "");
   const many = series.length > 1;
-  // Recharts' "auto" domain ignores range-valued (band) areas, so include the cone explicitly.
+  // Recharts' "auto" domain ignores range-valued (band) areas, so include the box explicitly.
   let domain = many ? [0, "auto"] : ["auto", "auto"];
   if (chartData !== data) {
     const values = chartData.flatMap((row) => [row[series[0].key], ...(row.band ?? [])]).filter((v) => v != null);
@@ -150,18 +146,29 @@ export default function TrendChart({
                 cursor={{ stroke: "var(--axis)", strokeWidth: 1 }}
                 content={<ChartTooltip series={series} formatValue={formatValue} formatLabel={formatLabel} forecast={forecast} />}
               />
+              {/* The band area fills the box and feeds the tooltip; the reference area draws its outline. */}
               {chartData !== data && (
                 <Area
-                  type="monotone"
+                  type="linear"
                   dataKey="band"
                   name={forecast.label}
-                  stroke="var(--series-2)"
-                  strokeWidth={1.5}
-                  strokeDasharray="4 3"
+                  stroke="none"
                   fill="var(--series-2)"
                   fillOpacity={0.16}
                   activeDot={false}
                   isAnimationActive={false}
+                />
+              )}
+              {chartData !== data && (
+                <ReferenceArea
+                  x1={data[data.length - 1][xKey]}
+                  x2={forecast.dates[forecast.dates.length - 1]}
+                  y1={forecast.low}
+                  y2={forecast.high}
+                  stroke="var(--series-2)"
+                  strokeWidth={1.5}
+                  strokeDasharray="4 3"
+                  fill="none"
                 />
               )}
               {series.map((s, i) => (

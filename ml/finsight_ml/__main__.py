@@ -3,6 +3,7 @@
   fetch      download/refresh price history (Yahoo Finance for stocks, Binance for crypto)
   evaluate   walk-forward evaluation of all direction models and baselines; writes reports/
   range-evaluate  walk-forward evaluation of the 80% range models; writes reports/range_<type>.json
+  range-tests     add coverage tests to the saved range report from the saved forecasts (no refitting)
   train      fit the selected model per asset type on all history; writes models/
   predict    score the latest day of every asset; writes reports/predictions.json
   publish    push real prices and the latest predictions to the FinSight backend
@@ -39,6 +40,13 @@ def cmd_range_evaluate(args):
     for asset_type in _types(args):
         print(f"Range walk-forward evaluation ({asset_type})…")
         range_pipeline.evaluate_range(asset_type, models=args.models)
+    print(report.write_markdown())
+
+
+def cmd_range_tests(args):
+    for asset_type in _types(args):
+        print(f"Coverage tests ({asset_type})…")
+        range_pipeline.add_coverage_tests(asset_type)
     print(report.write_markdown())
 
 
@@ -83,7 +91,7 @@ def main(argv=None):
         stream.reconfigure(encoding="utf-8", errors="replace")
     parser = argparse.ArgumentParser(prog="finsight_ml", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = parser.add_subparsers(dest="command", required=True)
-    for name in ("fetch", "evaluate", "range-evaluate", "train", "predict", "publish", "all"):
+    for name in ("fetch", "evaluate", "range-evaluate", "range-tests", "train", "predict", "publish", "all"):
         p = sub.add_parser(name)
         p.add_argument("--type", choices=pipeline.ASSET_TYPES, help="limit to stocks or crypto")
         if name in ("fetch", "all"):
@@ -101,7 +109,7 @@ def main(argv=None):
         if name == "all":
             p.add_argument("--publish", action="store_true", help="also publish to the backend")
     args = parser.parse_args(argv)
-    commands = {"fetch": cmd_fetch, "evaluate": cmd_evaluate, "range-evaluate": cmd_range_evaluate, "train": cmd_train, "predict": cmd_predict, "publish": cmd_publish, "all": cmd_all}
+    commands = {"fetch": cmd_fetch, "evaluate": cmd_evaluate, "range-evaluate": cmd_range_evaluate, "range-tests": cmd_range_tests, "train": cmd_train, "predict": cmd_predict, "publish": cmd_publish, "all": cmd_all}
     try:
         commands[args.command](args)
     except DataError as error:

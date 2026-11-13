@@ -15,8 +15,8 @@ from .data import DataError, load_earnings
 from .evaluation import walk_forward_folds
 from .features import build_dataset, compute_features
 from .pipeline import load_universe
-from .ranges import (EARNINGS_BASE, LEVEL, RANGE_BASELINE, RANGE_MODELS, fit_garch, garch_scale, hist_vol_scale, interval_score,
-                     range_metrics, skill_interval)
+from .ranges import (EARNINGS_BASE, LEVEL, RANGE_BASELINE, RANGE_MODELS, christoffersen_test, fit_garch, garch_scale, hist_vol_scale,
+                     interval_score, range_metrics, skill_interval)
 from .sequence import sequence_windows
 
 
@@ -82,6 +82,78 @@ def _fit_predict(name, dataset, scales, train_idx, test_idx):
     return model.predict(X[test_idx], s[test_idx])
 
 
+def holdout_check(lo: dict, hi: dict, y, dates, target_dates, fold_ids, years: float = config.HOLDOUT_YEARS) -> dict:
+    """Scores the range models on a final period that played no part in choosing between them.
+
+    The main evaluation picks the winner on the same out-of-sample days it is scored on, which
+    flatters the winner a little. Here the winner is picked on the days whose outcome was known
+    before the last `years` years, and every model is then scored on those last years only. The
+    walk-forward predictions are reused as they are: each was made by a model trained on earlier data.
+    """
+    tested = fold_ids >= 0
+    cutoff = str(np.datetime64(max(dates[tested])) - np.timedelta64(round(365.25 * years), "D"))
+    select = tested & (target_dates < cutoff)
+    hold = tested & (dates >= cutoff)
+    scores = {name: interval_score(lo[name], hi[name], y) for name in lo}
+    chosen = min((n for n in lo if n != RANGE_BASELINE), key=lambda n: scores[n][select].mean())
+    results = {}
+    for name in lo:
+        metrics = range_metrics(lo[name][hold], hi[name][hold], y[hold])
+        metrics["skill_vs_constant"], metrics["skill_vs_constant_ci95"] = skill_interval(
+            scores[name][hold], scores[RANGE_BASELINE][hold], fold_ids[hold])
+        metrics["selection_interval_score"] = float(scores[name][select].mean())
+        results[name] = metrics
+    return {
+        "years": years,
+        "selection_period": {"from": str(min(dates[select])), "to": str(max(dates[select])), "rows": int(select.sum())},
+        "period": {"from": str(min(dates[hold])), "to": str(max(dates[hold])), "rows": int(hold.sum())},
+        "selected_model": chosen,
+        "has_reliable_skill": bool(results[chosen]["skill_vs_constant_ci95"][0] > 0),
+        "results": results,
+    }
+
+
+def coverage_tests(lo: dict, hi: dict, y, symbols, row_index, tested, horizon: int = config.HORIZON, significance: float = 0.05) -> dict:
+    """Kupiec and Christoffersen coverage tests for every model, one asset at a time.
+
+    The tests assume independent outcomes. Neighbouring 5-day windows share days, and assets move
+    together on the same day, so each asset is tested on its own using every `horizon`-th forecast
+    (windows that don't overlap). The summary counts the assets where each test rejects.
+    """
+    out = {}
+    for name in lo:
+        per_asset = {}
+        for symbol in np.unique(symbols):
+            rows = np.flatnonzero(tested & (symbols == symbol))
+            rows = rows[np.argsort(row_index[rows])]
+            rows = rows[(row_index[rows] - row_index[rows[0]]) % horizon == 0]
+            per_asset[str(symbol)] = christoffersen_test((y[rows] < lo[name][rows]) | (y[rows] > hi[name][rows]))
+        tests = list(per_asset.values())
+        n = sum(t["n"] for t in tests)
+        out[name] = {
+            "assets": len(tests),
+            "forecasts": n,
+            "coverage": 1 - sum(t["misses"] for t in tests) / n,
+            "rejected_uc": sum(t["p_uc"] < significance for t in tests),
+            "rejected_ind": sum(t["p_ind"] < significance for t in tests),
+            "rejected_cc": sum(t["p_cc"] < significance for t in tests),
+            "per_asset": per_asset,
+        }
+    return out
+
+
+# Runs at a non-default level (RANGE_LEVEL) keep their own files, e.g. range_stock_90.json.
+_LEVEL_TAG = "" if LEVEL == config.DEFAULT_RANGE_LEVEL else f"_{round(LEVEL * 100)}"
+
+
+def _report_path(asset_type: str):
+    return config.REPORTS_DIR / f"range_{asset_type}{_LEVEL_TAG}.json"
+
+
+def _oos_path(asset_type: str):
+    return config.MODELS_DIR / f"range_{asset_type}_oos{_LEVEL_TAG}.npz"
+
+
 def evaluate_range(asset_type: str, models: list[str] | None = None, log=print) -> dict | None:
     """Walk-forward evaluation of every range model. Writes reports/range_<type>.json."""
     universe = load_universe(asset_type, log)
@@ -90,7 +162,9 @@ def evaluate_range(asset_type: str, models: list[str] | None = None, log=print) 
         return None
     dataset = build_dataset(universe)
     dataset["earnings"] = _earnings_flags(universe, dataset, log)
-    names = list(dict.fromkeys([RANGE_BASELINE, *(models or RANGE_MODELS)]))
+    # Only stocks have results dates; elsewhere an earnings model is its base model with an empty flag.
+    default = [m for m in RANGE_MODELS if asset_type == "stock" or m not in EARNINGS_BASE]
+    names = list(dict.fromkeys([RANGE_BASELINE, *(models or default)]))
     y, n = dataset["r_fwd"], len(dataset["y"])
     lo = {name: np.full(n, np.nan) for name in names}
     hi = {name: np.full(n, np.nan) for name in names}
@@ -135,13 +209,28 @@ def evaluate_range(asset_type: str, models: list[str] | None = None, log=print) 
         results[name] = {"metrics": metrics, "per_asset": per_asset}
 
     if models:  # merge into the saved report (same rule as `evaluate --models`)
-        path = config.REPORTS_DIR / f"range_{asset_type}.json"
+        path = _report_path(asset_type)
         if not path.exists():
             raise DataError(f"No saved {asset_type} range evaluation to merge into; run without --models first")
         previous = json.loads(path.read_text(encoding="utf-8"))
         if previous["results"][RANGE_BASELINE]["metrics"]["rows"] != int(tested.sum()) or previous["assets"] != sorted(universe):
             raise DataError(f"The saved {asset_type} range evaluation used different data; run it in full")
         results = {**previous["results"], **results}
+        # The hold-out check needs every model's predictions: add the saved ones for models not re-run.
+        if _oos_path(asset_type).exists():
+            saved = np.load(_oos_path(asset_type))
+            for name in results:
+                if name not in lo and f"lo__{name}" in saved and len(saved[f"lo__{name}"]) == n:
+                    lo[name], hi[name] = saved[f"lo__{name}"], saved[f"hi__{name}"]
+
+    config.MODELS_DIR.mkdir(parents=True, exist_ok=True)
+    np.savez_compressed(_oos_path(asset_type), **{f"lo__{name}": v for name, v in lo.items()}, **{f"hi__{name}": v for name, v in hi.items()})
+    holdout = tests = None
+    if set(lo) == set(results):
+        holdout = holdout_check(lo, hi, y, dataset["date"], dataset["target_date"], fold_ids)
+        tests = coverage_tests(lo, hi, y, dataset["symbol"], dataset["row_index"], tested)
+    else:
+        log(f"  {asset_type}: hold-out check skipped (run without --models once to save every model's predictions)")
 
     candidates = [m for m in results if m != RANGE_BASELINE]
     best = min(candidates, key=lambda m: results[m]["metrics"]["interval_score"])
@@ -157,14 +246,43 @@ def evaluate_range(asset_type: str, models: list[str] | None = None, log=print) 
         "selected_model": best,
         # Skill is "reliable" when the 95% interval of the improvement over the constant range excludes 0.
         "has_reliable_skill": bool(best_metrics["skill_vs_constant_ci95"][0] > 0),
+        "holdout": holdout,
+        "coverage_tests": tests,
     }
     config.REPORTS_DIR.mkdir(parents=True, exist_ok=True)
-    (config.REPORTS_DIR / f"range_{asset_type}.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
+    _report_path(asset_type).write_text(json.dumps(report, indent=2), encoding="utf-8")
+    return report
+
+
+def add_coverage_tests(asset_type: str, log=print) -> dict | None:
+    """Adds the coverage tests to a saved report from the saved out-of-sample forecasts, without
+    refitting any model. The forecasts must come from the same data as the rebuilt dataset."""
+    path = _report_path(asset_type)
+    if not path.exists() or not _oos_path(asset_type).exists():
+        log(f"  {asset_type}: no saved range evaluation and forecasts; run `range-evaluate` first")
+        return None
+    report = json.loads(path.read_text(encoding="utf-8"))
+    dataset = build_dataset(load_universe(asset_type, log))
+    saved = np.load(_oos_path(asset_type))
+    lo = {name: saved[f"lo__{name}"] for name in report["results"]}
+    hi = {name: saved[f"hi__{name}"] for name in report["results"]}
+    tested = ~np.isnan(lo[RANGE_BASELINE])
+    if len(tested) != len(dataset["y"]) or int(tested.sum()) != report["results"][RANGE_BASELINE]["metrics"]["rows"]:
+        raise DataError(f"The saved {asset_type} forecasts don't match the current data; run `range-evaluate` again")
+    y = dataset["r_fwd"]
+    for name in lo:  # the saved forecasts must reproduce the reported coverage exactly
+        coverage = float(np.mean((y[tested] >= lo[name][tested]) & (y[tested] <= hi[name][tested])))
+        if abs(coverage - report["results"][name]["metrics"]["coverage"]) > 1e-9:
+            raise DataError(f"The saved {asset_type} forecasts for {name} don't reproduce the report; run `range-evaluate` again")
+    report["coverage_tests"] = coverage_tests(lo, hi, y, dataset["symbol"], dataset["row_index"], tested)
+    path.write_text(json.dumps(report, indent=2), encoding="utf-8")
     return report
 
 
 def train_range(asset_type: str, model_name: str | None = None, log=print) -> dict | None:
     """Fits the selected range model on all history. Writes models/range_<type>.joblib."""
+    if _LEVEL_TAG:
+        raise DataError("RANGE_LEVEL is set: other levels are for `range-evaluate` only; unset it to train the app's 80% model")
     path = config.REPORTS_DIR / f"range_{asset_type}.json"
     evaluation = json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
     if model_name is None:
